@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _jumpForce = 5f;
     [SerializeField] LayerMask _groundLayer;
+    [SerializeField] Cap _cap;
     [SerializeField] float _groundCheckDistance = 0.1f;
 
     Rigidbody _rigidbody;
@@ -52,9 +53,12 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
         }
-        
-        if (Input.GetKeyDown(KeyCode.E)) 
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             _animator.SetTrigger("Throw");
+            _cap.Show();
+        }
     }
 
     void CheckGrounded()
