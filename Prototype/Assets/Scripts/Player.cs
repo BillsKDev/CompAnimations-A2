@@ -73,6 +73,9 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Ground"))
             other.GetComponent<Animator>().SetTrigger("Down");
+        
+        if (other.gameObject.CompareTag("Coin"))
+            other.gameObject.SetActive(false);
     }
 
     void OnTriggerExit(Collider other)
