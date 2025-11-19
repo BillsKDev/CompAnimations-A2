@@ -52,6 +52,9 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             _animator.SetBool("Jumping", true);
         }
+        
+        if (Input.GetKeyDown(KeyCode.E)) 
+            _animator.SetTrigger("Throw");
     }
 
     void CheckGrounded()
