@@ -76,6 +76,9 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.CompareTag("Coin"))
             other.gameObject.SetActive(false);
+        
+        if (other.gameObject.CompareTag("Enemy"))
+            other.GetComponent<Animator>().SetTrigger("Shock");
     }
 
     void OnTriggerExit(Collider other)
@@ -85,5 +88,8 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.CompareTag("Ground"))
             other.GetComponent<Animator>().SetTrigger("Up");
+        
+        if (other.gameObject.CompareTag("Enemy"))
+            other.GetComponent<Animator>().SetTrigger("Walk");
     }
 }
