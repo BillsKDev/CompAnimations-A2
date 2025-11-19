@@ -70,11 +70,17 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Water"))
             _animator.SetBool("Water", true);
+
+        if (other.gameObject.CompareTag("Ground"))
+            other.GetComponent<Animator>().SetTrigger("Down");
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Water"))
             _animator.SetBool("Water", false);
+        
+        if (other.gameObject.CompareTag("Ground"))
+            other.GetComponent<Animator>().SetTrigger("Up");
     }
 }
