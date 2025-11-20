@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] Cap _cap;
     [SerializeField] float _groundCheckDistance = 0.1f;
+    [SerializeField] UnityEvent IKAnimation;
 
     Rigidbody _rigidbody;
     Animator _animator;
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             _animator.SetTrigger("Throw");
+            _rigidbody.isKinematic = false;
             _cap.Show();
         }
     }
@@ -83,6 +86,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("IK"))
         {
             _animator.SetTrigger("IK");
+            IKAnimation.Invoke();
+            _rigidbody.isKinematic = true;
         }
     }
 
