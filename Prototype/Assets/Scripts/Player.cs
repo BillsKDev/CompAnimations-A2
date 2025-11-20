@@ -79,6 +79,11 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.CompareTag("Enemy"))
             other.GetComponent<Animator>().SetTrigger("Shock");
+
+        if (other.gameObject.CompareTag("IK"))
+        {
+            _animator.SetTrigger("IK");
+        }
     }
 
     void OnTriggerExit(Collider other)
